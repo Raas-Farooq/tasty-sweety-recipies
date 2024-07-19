@@ -4,7 +4,7 @@ import style from './recipeList.module.css'
 import { Link } from "react-router-dom";
 
 
-export const RecipeList = () => {
+export default function RecipeList(){
 
     const {recipesData, error} = useGlobalState();
     function accessShortTitle(name){
@@ -24,21 +24,26 @@ export const RecipeList = () => {
 
     return (
         <> 
-            <h2 className={style.heading}> Special Recipes</h2>
+            
             {recipesData.length > 0 ? 
-            (<ul className={style.recipesList}>
+            
+            (
+            <>
+                <h2 className={style.heading}> Special Recipes</h2>
+                <ul className={style.recipesList}>
                 {recipesData.map(recipe => {
                     return(
                         <div key={recipe.id} className={style.recipeCard}>
                             <h5> {accessShortTitle(recipe.title)} </h5>
                             <img src={recipe.image_url} style={{width:"280px", height:"300px"}} />
                             <p> {recipe.publisher} </p>
-                            <button className="btn btn-danger"><Link to="detail">Detail</Link>  </button>
+                            <button className="btn btn-danger"><Link to={`/detail/${recipe.id}`}>Detail</Link> </button>
                         </div>
                     )
                 })}
-            </ul> ):
-            (<h2> No Recipe Found</h2>)}
+            </ul> 
+            </>):
+            (<h2> No Recipe Found. Search Your Favorite Recipe</h2>)}
             
         </>
     )

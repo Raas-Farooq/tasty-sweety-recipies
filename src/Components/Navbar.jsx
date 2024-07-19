@@ -2,7 +2,7 @@ import React from "react";
 import './navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useGlobalState } from "../Context";
-import { RecipeList } from "./RecipeList";
+import RecipeList  from "./RecipeList";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
@@ -47,7 +47,7 @@ export const Navbar = () => {
                 </div>
             </nav>
 
-            {/* {recipesData ? <} */}
+            
         </>
     )
 }
