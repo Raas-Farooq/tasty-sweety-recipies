@@ -25,40 +25,27 @@ export default function Detail(){
     
     return (
         
-            <div style={{textAlign:'center'}}>
+            <div style={{display:"flex", gap:"40px"}}>
             {!loading && 
                 <>
-                    <h2> {detailCard.title} </h2>
-                    <img src={detailCard.image_url} style={{width:"300px"}} />
-                    <h5> {detailCard.publisher} </h5>
-
-                    <h6> {detailCard.cooking_time} </h6>
-                    <h6> {detailCard.servings} </h6>
+                   
+                    <img src={detailCard.image_url} style={{width:"400px", height:'400px'}} />
                     
                     <div>
+                       
+                        <h6> {detailCard.publisher} </h6> 
+                        <h2> {detailCard.title} </h2>
+                        <button className="btn btn-warning">Favorites</button>
                         {detailCard && detailCard.ingredients? 
                         detailCard.ingredients.map((ing, ind) => 
                             
                             <>
-                                <table>  
-
-                                    <tr>
-                                        <th>ingredient {ind + 1} </th>
-                                        <th>Quantity </th>
-                                        {ing.unit && <th> Unit </th>} 
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>{ing.description}</td>
-                                        <td>{ing.quantity}</td>
-                                        <td>{ing.unit}</td>
-                                    </tr>
-                                        
-                                </table>
-                    
+                                
+                                <p> {`${ing.quantity ? ing.quantity: ''}  ${ing.unit}  ${ing.description}`} </p>
+                                
                             </>
-                        ):
-                        <h5>No Ingridents Accessed</h5>}
+                         ):
+                        <h5>No Ingridents Accessed</h5>} 
                     </div>
                 </>
             }
