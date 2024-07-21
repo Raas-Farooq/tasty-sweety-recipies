@@ -41,7 +41,7 @@ export const Navbar = () => {
                 </form>   
                 <div className="navigation-btn">
                     <div> 
-                        <button className={`homeBtn btn btn-danger`} aria-label="home-btn"><Link to="/">Home</Link></button>
+                        <button className={`homeBtn btn btn-danger`} aria-label="home-btn"><Link to="/" className="btnLink">Home</Link></button>
                         <button className="favBtn btn btn-danger" aria-label="fav-btn">Favorites</button>
                     </div>
                 </div>

@@ -41,7 +41,7 @@ export default function Detail(){
                             
                             <>
                                 
-                                <p> {`${ing.quantity ? ing.quantity: ''}  ${ing.unit}  ${ing.description}`} </p>
+                                <p key={ind}> {`${ing.quantity ? ing.quantity: ''}  ${ing.unit}  ${ing.description}`} </p>
                                 
                             </>
                          ):
@@ -56,24 +56,3 @@ export default function Detail(){
 
 }
 
-{/* <span style={{fontWeight:"bolder"}}></span> */}
-// export default function Detail() {
-//     const { recipesData } = useGlobalState();
-//     const { id } = useParams();
-    
-//     const recipe = recipesData.find(recipe => recipe.id === id);
-  
-//     if (!recipe) {
-//       return <h2>Recipe not found</h2>;
-//     }
-  
-//     const { title, image_url, publisher } = recipe;
-  
-//     return (
-//       <>
-//         <h2>{title}</h2>
-//         <img src={image_url} alt={title} style={{width: '300px', height: '300px'}} />
-//         <h4>{publisher}</h4>
-//       </>
-//     );
-//   }

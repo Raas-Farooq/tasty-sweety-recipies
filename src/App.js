@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/home";
 import RecipeList from "./Components/RecipeList";
 import Detail from "./Pages/detail";
+import Favorites from './Pages/Favorites.js';
 
 
 export default function App(){
@@ -16,10 +17,10 @@ export default function App(){
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="recipeList" element ={<RecipeList />} />
+                {/* <Route path="recipeList" element ={<RecipeList />} /> */}
                 <Route path='/detail/:id' element={<Detail />} />
             </Routes>
-            {recipesData.length > 0 && window.location.pathname === '/' && <RecipeList />}
+            {/* {recipesData.length > 0 && window.location.pathname === '/' && <RecipeList />} */}
         </div>
         </>
         
