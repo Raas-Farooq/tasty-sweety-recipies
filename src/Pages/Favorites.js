@@ -9,11 +9,19 @@ const Favorites = () => {
   const [showDetails, setShowDetails] = useState(false);
   const location = useLocation();
 
-  const text = 'go To Hike And Challenge Yourself';
-  const trimSplit = text.trim().split(/\s+/);
-  const words = trimSplit.slice(0, 4);
-  console.log("slice words: ", words);
- console.log("trimSplit: ", trimSplit)
+//   text.trim().split(/\s+/);
+
+function getShortTitle(title){
+    const text = 'go To Hike And Challenge Yourself';
+    const trimSplit = title.trim().split(/\s+/);
+    const words = trimSplit.slice(0, 3);
+    const fourWords =  words.join(' ');
+    
+    return trimSplit.length > 4 ?  fourWords + '..': fourWords
+  
+    // return fourWords;
+}
+  
   const [recipe, setRecipe] = useState("");
   const { fromFav, id } = location.state || {};
 
@@ -36,13 +44,13 @@ const Favorites = () => {
       <ul style={{ display: "flex", flexWrap: "wrap", gap:'25px' }}>
         {favoritesList ? (
           favoritesList.map((favorite) => (
-            <li style={{ textDecoration: "none" }}>
+            <li style={{ listStyle:'none' }}>
               <div
                 className="myRecipeCard"
                 key={favorite.id}
                 style={{ display: "flex", flexDirection: "column" }}
               >
-                <h2> {favorite.title} </h2>
+                <h4> {getShortTitle(favorite.title)} </h4>
                 <img
                   src={favorite.image_url}
                   style={{ width: "300px", height: "280px" }}
