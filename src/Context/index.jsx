@@ -13,15 +13,19 @@ const GlobalContext = createContext();
 export default function GlobalState({ children }) {
 
   const [recipesData, setRecipesData] = useState([]);
+  const [favoritesList, setFavoritesList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searching, setSearchParameters] = useState('');
+  const [write, setWrite] = useState(false);
+  const [isFetchRun, setIsFetchRun] = useState(false);
 
   const navigateTo = useNavigate();
 
   const fetchRecipes = useCallback(async (search, id=null) => {
     setLoading(true);
-    setError(null)
+    setError(null);
+    console.log(" Fetch is Here");
     console.log("search context:search ", search);
     let url = `https://forkify-api.herokuapp.com/api/v2/recipes`
     if(id){
@@ -44,13 +48,17 @@ export default function GlobalState({ children }) {
         console.log("single Detail: in context", recipe);
         return recipe;
       }
-      else{
+      else if(search){
         const recipes = dataResponse?.data?.recipes;
         console.log("serch detail useContext:", recipes);
         setRecipesData(recipes);
         navigateTo('/');
         return recipes
       }
+      else if(!search && !id){
+        console.log("nothing is being Searched")
+      }
+
     } catch (error) {
       console.log("error while fetching Data from Api", error);
       setError(true);
@@ -59,7 +67,13 @@ export default function GlobalState({ children }) {
     }
   }, []);
 
-  
+  function startWriting(){
+    setWrite(true);
+  }
+
+  function fetchFunctionRuns(){
+    setIsFetchRun(true);
+  }
 //   useEffect(() => {
 //     console.log("recipe DATA Changes")
 //   }, [recipesData]);
@@ -68,6 +82,8 @@ export default function GlobalState({ children }) {
   return (
     <GlobalContext.Provider
       value={{
+        favoritesList,
+        setFavoritesList,
         recipesData,
         error,
         setLoading,
@@ -75,7 +91,11 @@ export default function GlobalState({ children }) {
         fetchRecipes,
         setSearchParameters,
         searching,
-        setError
+        setError,
+        startWriting,
+        write,
+        fetchFunctionRuns,
+        isFetchRun
       }}
     >
       {children}

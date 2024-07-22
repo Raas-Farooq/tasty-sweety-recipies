@@ -6,7 +6,7 @@
     color:crimson;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.btnLink{
+.btnLink, .favLink{
     text-decoration: none;
     color:white;
 }

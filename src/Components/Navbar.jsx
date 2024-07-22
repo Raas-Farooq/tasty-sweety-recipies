@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 
-    const {recipesData,searching, setSearchParameters, loading, fetchRecipes} = useGlobalState();
+    const {fetchFunctionRuns, startWriting, write ,searching, setSearchParameters, loading, fetchRecipes} = useGlobalState();
 
     if(loading){
         return <div> <h2> ..Loading</h2></div>
@@ -16,10 +16,14 @@ export const Navbar = () => {
     const handleOnSubmit = (e) => {
         e.preventDefault();
         fetchRecipes(searching);
+        fetchFunctionRuns();
         setSearchParameters("");
     }
 
-    console.log("seraching: ", searching);
+    if(searching){
+        startWriting();
+    }
+
     return(
         <>
             <nav className="nav-container">
@@ -42,7 +46,7 @@ export const Navbar = () => {
                 <div className="navigation-btn">
                     <div> 
                         <button className={`homeBtn btn btn-danger`} aria-label="home-btn"><Link to="/" className="btnLink">Home</Link></button>
-                        <button className="favBtn btn btn-danger" aria-label="fav-btn">Favorites</button>
+                        <button className="favBtn btn btn-danger" aria-label="fav-btn"><Link to="Favorites" className="favLink">Favorites </Link></button>
                     </div>
                 </div>
             </nav>

@@ -17,10 +17,11 @@ export default function App(){
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                {/* <Route path="recipeList" element ={<RecipeList />} /> */}
+                <Route path="recipeList" element ={<RecipeList />} />
                 <Route path='/detail/:id' element={<Detail />} />
+                <Route path='/favorites' element ={<Favorites />} />
             </Routes>
-            {/* {recipesData.length > 0 && window.location.pathname === '/' && <RecipeList />} */}
+           
         </div>
         </>
         

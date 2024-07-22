@@ -1,28 +1,70 @@
 import React, {useState, useEffect, useCallback} from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useGlobalState } from "../Context";
 import './detail.css';
-
+import { Link } from "react-router-dom";
 
 export default function Detail(){
-    console.log("DETAIL IS RUNNING");
+   
     const [detailCard, setDetailCard] = useState([]);
+    const [existed, setExisted] = useState(false);
     const {recipesData, fetchRecipes, loading} = useGlobalState();
     const {id} = useParams();
-   
-    const gettingSingleRecipe = async() => {
-        const recipeDetail = await fetchRecipes(null, id);
-        console.log("recipeDetail ",recipeDetail);
-        setDetailCard(recipeDetail);
-    }
+    const location = useLocation();
+
     
+    const {fromDetail, fromFav} = location.state || {};
+
+    
+    function saveData(myFavorites){
+        localStorage.setItem('favorites', JSON.stringify(myFavorites))
+    }
+
+
+    
+     const handleFavoriteClick = async () => {
+
+        const favoritesData = JSON.parse(localStorage.getItem('favorites')) || [];
+        if(existed){ 
+            const newFavorites = favoritesData.filter(fav => fav.id != detailCard.id);
+            saveData(newFavorites)
+        }
+        else{
+            favoritesData.push(detailCard);
+            saveData(favoritesData);
+
+        }
+        setExisted(!existed)
+        
+    }   
+
 
     useEffect(() => {
+        const gettingSingleRecipe = async () => {
+            const singleCard = await fetchRecipes('null', id);
+            setDetailCard(singleCard)
+        };
         gettingSingleRecipe();
         console.log("detailCard useEffect ",detailCard);
-    }, [id])
+    }, [id, fetchRecipes])
 
     
+    useEffect(() => {
+        if(detailCard){
+            const favoritesData = JSON.parse(localStorage.getItem('favorites')) || [];
+           
+            const found = favoritesData.some(fav => fav.id === detailCard.id);
+            console.log("found after Some: ", found);
+            setExisted(found);
+           
+            
+        }
+    }, [detailCard])
+
+
+    if(loading || !detailCard){
+        return (<div> Wait ..</div>)
+    }
     return (
         
             <div style={{display:"flex", gap:"40px"}}>
@@ -35,7 +77,13 @@ export default function Detail(){
                        
                         <h6> {detailCard.publisher} </h6> 
                         <h2> {detailCard.title} </h2>
-                        <button className="btn btn-warning">Favorites</button>
+                        <button className="btn btn-warning" onClick={(e) => {
+                            console.log("e.target.value:", e.target.value);
+                            handleFavoriteClick()
+                            }
+                        }>
+                            {existed ? 'Remove Favorite' : 'Add to Favorites' }
+                        </button>
                         {detailCard && detailCard.ingredients? 
                         detailCard.ingredients.map((ing, ind) => 
                             
