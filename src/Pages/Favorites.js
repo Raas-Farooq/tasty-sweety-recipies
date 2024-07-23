@@ -26,7 +26,9 @@ function getShortTitle(title){
   const { fromFav, id } = location.state || {};
 
   const handleSeeMoreDetails = (favId) => {
-    // console.log("target:", e.target.parentElement.parentElement.parentElement);
+    
+    // setTargetId(favId === targetId ? null : favId);
+
     setTargetId(favId === targetId ? null : favId);
     // setShowDetails(!showDetails);
   };
@@ -38,6 +40,8 @@ function getShortTitle(title){
     console.log("showDetails in useEffect: ", showDetails);
   }, [id]);
 
+
+  
   
   return (
     <div>

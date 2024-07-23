@@ -20,46 +20,40 @@ export default function Detail(){
         localStorage.setItem('favorites', JSON.stringify(myFavorites))
     }
 
-
-    
-     const handleFavoriteClick = async () => {
-
-        const favoritesData = JSON.parse(localStorage.getItem('favorites')) || [];
-        if(existed){ 
-            const newFavorites = favoritesData.filter(fav => fav.id != detailCard.id);
-            saveData(newFavorites)
-        }
-        else{
-            favoritesData.push(detailCard);
-            saveData(favoritesData);
-
-        }
-        setExisted(!existed)
-        
-    }   
-
-
     useEffect(() => {
-        const gettingSingleRecipe = async () => {
-            const singleCard = await fetchRecipes('null', id);
-            setDetailCard(singleCard)
-        };
-        gettingSingleRecipe();
-        console.log("detailCard useEffect ",detailCard);
-    }, [id, fetchRecipes])
+        const fetchingRecipes = async () => {
+            const specificCard = await fetchRecipes(null, id);
+            setDetailCard(specificCard);
+        }
+        fetchingRecipes()
+    }, [id, fetchRecipes]);
 
-    
-    useEffect(() => {
+
+    useEffect (() => {
         if(detailCard){
-            const favoritesData = JSON.parse(localStorage.getItem('favorites')) || [];
-           
-            const found = favoritesData.some(fav => fav.id === detailCard.id);
-            console.log("found after Some: ", found);
+            const favorites = JSON.parse(localStorage.getItem('favorites'))||[];
+
+            const found = favorites.some(fav => fav.id === detailCard.id);
+
             setExisted(found);
-           
-            
         }
     }, [detailCard])
+
+    const handleFavoriteClick = () => {
+        const favorites = JSON.parse(localStorage.getItem('favorites'))||[];
+        if(existed){
+            const newFavorites = favorites.filter (fav => fav.id !== detailCard.id);
+            localStorage.setItem('favorites', JSON.stringify(newFavorites));
+            
+        }
+        else{
+
+            favorites.push(detailCard);
+            saveData(favorites);
+            
+        }
+        setExisted(!existed)
+    }
 
 
     if(loading || !detailCard){

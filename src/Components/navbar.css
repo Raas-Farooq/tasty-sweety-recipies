@@ -10,3 +10,38 @@
     text-decoration: none;
     color:white;
 }
+@media only screen 
+and (max-width:750px){
+    .headingText{
+        font-size:20px;
+    }
+    .btnLink, .favLink{
+        font-size: 13px;
+    }
+   
+}
+
+@media only screen 
+and (max-width:630px){
+    .headingText{
+        font-size:18px;
+    }
+    .btnLink, .favLink{
+        font-size: 13px;
+    }
+    .search-text{
+        width:210px
+    }
+}
+@media only screen 
+and (max-width:550px){
+    .headingText{
+        font-size:16px;
+    }
+    .btnLink, .favLink{
+        font-size: 11px;
+    }
+    .search-text{
+        width:150px
+    }
+}

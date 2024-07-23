@@ -71,6 +71,8 @@ export default function GlobalState({ children }) {
     setWrite(true);
   }
 
+  
+
   function fetchFunctionRuns(){
     setIsFetchRun(true);
   }

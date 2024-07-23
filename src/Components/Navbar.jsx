@@ -28,7 +28,7 @@ export const Navbar = () => {
         <>
             <nav className="nav-container">
                 <div className="nav-header" aria-label="nav-header">
-                    <h2>TasTySweeTyRecipes</h2>
+                    <h2 className="headingText">TasTySweeTyRecipes</h2>
                 </div>    
                 <form className="myForm" onSubmit={(e) => handleOnSubmit(e)}>
                     <label className="label"></label>
