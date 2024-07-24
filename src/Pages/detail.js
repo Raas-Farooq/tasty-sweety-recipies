@@ -37,6 +37,7 @@ export default function Detail(){
 
             setExisted(found);
         }
+        // window.scrollY = (0)
     }, [detailCard])
 
     const handleFavoriteClick = () => {

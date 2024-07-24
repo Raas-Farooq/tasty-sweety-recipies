@@ -13,6 +13,7 @@ const GlobalContext = createContext();
 export default function GlobalState({ children }) {
 
   const [recipesData, setRecipesData] = useState([]);
+  const [scrollPosition, setScrollPosition] = useState();
   const [favoritesList, setFavoritesList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -97,7 +98,9 @@ export default function GlobalState({ children }) {
         startWriting,
         write,
         fetchFunctionRuns,
-        isFetchRun
+        isFetchRun,
+        setScrollPosition,
+        scrollPosition
       }}
     >
       {children}
