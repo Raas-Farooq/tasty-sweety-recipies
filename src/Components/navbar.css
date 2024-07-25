@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 .homeBtn{
     margin-right:15px;
@@ -50,21 +49,4 @@ and (max-width:550px){
     .search-text{
         width:145px
     }
-=======
-/* .nav-container{
-    display:flex;
-    justify-content:space-between;
-}
-.myForm{
-    display:flex;
-    align-self: center;
-}
-.navigation-btn{
-    display:flex;
-    align-self: center;
-    margin-right:10px;
-} */
-.homeBtn{
-    margin-right:15px;
->>>>>>> feature/navbar
 }
