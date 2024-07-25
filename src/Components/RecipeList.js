@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect } from "react";
 import { useGlobalState } from "../Context";
 import style from './recipeList.module.css'
@@ -12,17 +11,6 @@ export default function RecipeList(){
     const navigate = useNavigate();
     const myWindowSize = WindowSize();
     console.log("scrollPosition:L ", scrollPosition);
-=======
-import React from "react";
-import { useGlobalState } from "../Context";
-import style from './recipeList.module.css'
-import { Link } from "react-router-dom";
-
-
-export const RecipeList = () => {
-
-    const {recipesData, error} = useGlobalState();
->>>>>>> feature/navbar
     function accessShortTitle(name){
         const words = name.trim().split(/\s+/);
         const rawTitle = words.slice(0, 4);
@@ -31,7 +19,6 @@ export const RecipeList = () => {
         return words.length > 4? newTitle + '..' : newTitle
     }
 
-<<<<<<< HEAD
     const handleDetailsClick = (id) => {
      
         const scrollPos = window.scrollY;
@@ -50,13 +37,10 @@ export const RecipeList = () => {
 
 
 
-=======
->>>>>>> feature/navbar
     if (error) {
         return <div> <h2> Error while Fetching. Please Try Again </h2></div>
     }
 
-<<<<<<< HEAD
     if (!write){
         return <h2> Search Your Dream Food</h2>
     }
@@ -77,29 +61,6 @@ export const RecipeList = () => {
                 )
             })}
             </ul>  
-=======
-    
-    console.log("recipes in List; ", recipesData);
-
-    return (
-        <> 
-            <h2 className={style.heading}> Special Recipes</h2>
-            {recipesData.length > 0 ? 
-            (<ul className={style.recipesList}>
-                {recipesData.map(recipe => {
-                    return(
-                        <div key={recipe.id} className={style.recipeCard}>
-                            <h5> {accessShortTitle(recipe.title)} </h5>
-                            <img src={recipe.image_url} style={{width:"280px", height:"300px"}} />
-                            <p> {recipe.publisher} </p>
-                            <button className="btn btn-danger"><Link to="detail">Detail</Link>  </button>
-                        </div>
-                    )
-                })}
-            </ul> ):
-            (<h2> No Recipe Found</h2>)}
-            
->>>>>>> feature/navbar
         </>
     )
 }
