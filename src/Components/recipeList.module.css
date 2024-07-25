@@ -1,0 +1,24 @@
+.recipeCard{
+text-align:center;
+box-shadow: 0 2px 5px;
+padding:10px;
+}
+
+.recipesList{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    gap:10px;
+    margin:40px 0;
+}
+.heading{
+    margin-top:30px;
+    color:fuchsia
+<<<<<<< HEAD
+}
+.btnLink{
+    text-decoration: none;
+    color:white;
+=======
+>>>>>>> feature/navbar
+}

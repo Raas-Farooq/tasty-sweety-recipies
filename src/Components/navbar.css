@@ -1,0 +1,70 @@
+<<<<<<< HEAD
+
+.homeBtn{
+    margin-right:15px;
+}
+.nav-header{
+    color:crimson;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.btnLink, .favLink{
+    text-decoration: none;
+    color:white;
+}
+.headingText{
+    text-decoration:none;
+    color:rgb(220, 117, 20);
+}
+@media only screen 
+and (max-width:750px){
+    .headingText{
+        
+        font-size:20px;
+    }
+    .navigation-btn .homeBtn, .navigation-btn .favBtn{
+        font-size: 11px;
+    }
+   
+}
+
+@media only screen 
+and (max-width:630px){
+    .headingText{
+        font-size:18px;
+    }
+    .navigation-btn .homeBtn, .navigation-btn .favBtn{
+        font-size: 11px;
+    }
+    .search-text{
+        width:210px
+    }
+}
+@media only screen 
+and (max-width:550px){
+    .headingText{
+        font-size:16px;
+    }
+    .navigation-btn .homeBtn, .navigation-btn .favBtn{
+        font-size: 11px;
+    }
+    .search-text{
+        width:145px
+    }
+=======
+/* .nav-container{
+    display:flex;
+    justify-content:space-between;
+}
+.myForm{
+    display:flex;
+    align-self: center;
+}
+.navigation-btn{
+    display:flex;
+    align-self: center;
+    margin-right:10px;
+} */
+.homeBtn{
+    margin-right:15px;
+>>>>>>> feature/navbar
+}
