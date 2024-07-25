@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState, useEffect, useCallback} from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useGlobalState } from "../Context";
@@ -99,3 +100,17 @@ export default function Detail(){
 
 }
 
+=======
+import React from "react";
+
+
+export const Detail = () => {
+
+    return (
+        <>
+            <h2> GET THE DETAil </h2>
+        </>
+    )
+
+}
+>>>>>>> feature/navbar

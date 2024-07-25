@@ -64,6 +64,7 @@ export const Navbar = () => {
                     onChange={(e) => setSearchParameters(e.target.value)}
                     value={searching}
                     ref = {searchBox}
+
                     />
 
                 </form>   

@@ -13,6 +13,7 @@ const GlobalContext = createContext();
 export default function GlobalState({ children }) {
 
   const [recipesData, setRecipesData] = useState([]);
+<<<<<<< HEAD
   const [scrollPosition, setScrollPosition] = useState();
   const [favoritesList, setFavoritesList] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -37,12 +38,28 @@ export default function GlobalState({ children }) {
     }
     try {
       const response = await fetch(url);
+=======
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [searching, setSearchParameters] = useState('');
+
+  const navigateTo = useNavigate();
+  const fetchRecipes = useCallback(async (search) => {
+    setLoading(true);
+    console.log("search context:search ", search);
+    
+    try {
+      const response = await fetch(
+        `https://forkify-api.herokuapp.com/api/v2/recipes?search=${search}`
+      );
+>>>>>>> feature/navbar
 
       if (!response.ok) {
         throw new Error("unable to fetch Recipes");
       }
       
       const dataResponse = await response.json();
+<<<<<<< HEAD
       
       if(id){
         const recipe = dataResponse.data.recipe;
@@ -60,14 +77,32 @@ export default function GlobalState({ children }) {
         console.log("nothing is being Searched")
       }
 
+=======
+
+      const recipes = dataResponse?.data?.recipes;
+
+      setRecipesData(recipes);
+    //   if(recipesData){
+    //     console.log("Running");
+    //     setLoading(false);
+    //     setSearchParameters("");
+    //     navigateTo("/")
+    //   }
+      console.log('recipes DAta: ', recipes)
+>>>>>>> feature/navbar
     } catch (error) {
       console.log("error while fetching Data from Api", error);
       setError(true);
     } finally {
+<<<<<<< HEAD
+=======
+      setError(false);
+>>>>>>> feature/navbar
       setLoading(false);
     }
   }, []);
 
+<<<<<<< HEAD
   function startWriting(){
     setWrite(true);
   }
@@ -80,11 +115,21 @@ export default function GlobalState({ children }) {
 //   useEffect(() => {
 //     console.log("recipe DATA Changes")
 //   }, [recipesData]);
+=======
+  
+  useEffect(() => {
+    if (recipesData.length > 0) {
+      navigateTo("recipeList");
+      
+    }
+  }, [recipesData, navigateTo]);
+>>>>>>> feature/navbar
 
 
   return (
     <GlobalContext.Provider
       value={{
+<<<<<<< HEAD
         favoritesList,
         setFavoritesList,
         recipesData,
@@ -104,6 +149,17 @@ export default function GlobalState({ children }) {
       }}
     >
       {children}
+=======
+        recipesData,
+        error,
+        loading,
+        fetchRecipes,
+        setSearchParameters,
+        searching
+      }}
+    >
+      {children}{" "}
+>>>>>>> feature/navbar
     </GlobalContext.Provider>
   );
 }
