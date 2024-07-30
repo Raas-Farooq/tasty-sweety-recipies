@@ -9,18 +9,17 @@ const Favorites = () => {
   const [showDetails, setShowDetails] = useState(false);
   const location = useLocation();
 
-//   text.trim().split(/\s+/);
+
 
 function getShortTitle(title){
     const text = 'go To Hike And Challenge Yourself';
     const trimSplit = title.trim().split(/\s+/);
     const words = trimSplit.slice(0, 3);
-    const fourWords =  words.join(' ');
+    const shortTitle =  words.join(' ');
     
-    return trimSplit.length > 4 ?  fourWords + '..': fourWords
+    return trimSplit.length > 4 ?  shortTitle + '..': shortTitle
   
-    // return fourWords;
-}
+   }
   
   const [recipe, setRecipe] = useState("");
   const { fromFav, id } = location.state || {};
